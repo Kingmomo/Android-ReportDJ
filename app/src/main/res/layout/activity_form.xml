@@ -189,6 +189,7 @@
 
 
             <TextView
+                android:id="@+id/namagedung"
                 style="@style/EditText.Flat.Grey"
                 android:layout_width="fill_parent"
                 android:layout_height="@dimen/spacing_xmlarge"
@@ -203,6 +204,7 @@
                 android:minHeight="@dimen/spacing_xmlarge"
                 android:paddingLeft="@dimen/spacing_middle"
                 android:paddingRight="@dimen/spacing_middle"
+                android:textColor="@color/white_transparency"
                 android:textColorHint="@color/white_transparency" />
 
             <TextView

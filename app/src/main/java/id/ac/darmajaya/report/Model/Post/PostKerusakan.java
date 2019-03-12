@@ -2,15 +2,19 @@ package id.ac.darmajaya.report.Model.Post;
 
 public class PostKerusakan {
     private String nik;
+    private String gedung;
+    private String ruangan;
     private String id_jenis_kerusakan;
-    private String id_ruangan;
-    private String id_jam_perkuliahan;
+    private String nama_kerusakan;
+    private String jam_perkuliahan;
 
-    public PostKerusakan(String nik, String id_jenis_kerusakan, String id_ruangan, String id_jam_perkuliahan) {
+    public PostKerusakan(String nik, String gedung, String ruangan, String id_jenis_kerusakan, String nama_kerusakan, String jam_perkuliahan) {
         this.nik = nik;
+        this.gedung = gedung;
+        this.ruangan = ruangan;
         this.id_jenis_kerusakan = id_jenis_kerusakan;
-        this.id_ruangan = id_ruangan;
-        this.id_jam_perkuliahan = id_jam_perkuliahan;
+        this.nama_kerusakan = nama_kerusakan;
+        this.jam_perkuliahan = jam_perkuliahan;
     }
 
     public String getNik() {
@@ -21,6 +25,22 @@ public class PostKerusakan {
         this.nik = nik;
     }
 
+    public String getGedung() {
+        return gedung;
+    }
+
+    public void setGedung(String gedung) {
+        this.gedung = gedung;
+    }
+
+    public String getRuangan() {
+        return ruangan;
+    }
+
+    public void setRuangan(String ruangan) {
+        this.ruangan = ruangan;
+    }
+
     public String getId_jenis_kerusakan() {
         return id_jenis_kerusakan;
     }
@@ -29,19 +49,19 @@ public class PostKerusakan {
         this.id_jenis_kerusakan = id_jenis_kerusakan;
     }
 
-    public String getId_ruangan() {
-        return id_ruangan;
+    public String getNama_kerusakan() {
+        return nama_kerusakan;
     }
 
-    public void setId_ruangan(String id_ruangan) {
-        this.id_ruangan = id_ruangan;
+    public void setNama_kerusakan(String nama_kerusakan) {
+        this.nama_kerusakan = nama_kerusakan;
     }
 
-    public String getId_jam_perkuliahan() {
-        return id_jam_perkuliahan;
+    public String getJam_perkuliahan() {
+        return jam_perkuliahan;
     }
 
-    public void setId_jam_perkuliahan(String id_jam_perkuliahan) {
-        this.id_jam_perkuliahan = id_jam_perkuliahan;
+    public void setJam_perkuliahan(String jam_perkuliahan) {
+        this.jam_perkuliahan = jam_perkuliahan;
     }
 }

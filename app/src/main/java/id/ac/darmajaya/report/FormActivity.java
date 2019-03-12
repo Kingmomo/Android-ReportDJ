@@ -59,6 +59,8 @@ public class FormActivity extends AppCompatActivity {
     TextView kategori;
     @BindView(R.id.kerusakan)
     TextView kerusakan;
+    @BindView(R.id.namagedung)
+    TextView namagedung;
     @BindView(R.id.ruangan)
     TextView ruangan;
     @BindView(R.id.aduan)
@@ -80,6 +82,7 @@ public class FormActivity extends AppCompatActivity {
     private List<Ruangan> ruanganList = new ArrayList<>();
     private List<Kerusakan> kerusakanList = new ArrayList<>();
     private CharSequence[] itemKetegori = {"Kerusakan", "Aduan"};
+
 
 
     @Override
@@ -231,7 +234,12 @@ public class FormActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int item) {
                 ruangan.setEnabled(true);
                 gedung.setText(itemTitles[item]);
+                namagedung.setText(gedungList.get(item).getNama_lain());
                 dialog.dismiss();
+
+                ruanganList.clear();
+                ruanganList.addAll(gedungList.get(item).getRuangan());
+
             }
         });
 
@@ -295,16 +303,10 @@ public class FormActivity extends AppCompatActivity {
     }
 
     private String[] getRuanganArray() {
-        ruanganList.clear();
-//
-//        for (Gedung gedungg : gedungList) {
-//            if (gedungg.getNama_gedung().equals(gedung.getText().toString()));
-//            ruanganList.addAll(gedungg.getRuangan());
-//        }
-
-        ruanganList.addAll(findRuanganByIdgedung());
 
         final int itemCount = ruanganList.size();
+        System.out.println("hdah "+ itemCount);
+        System.out.println("hdah "+ findRuanganByIdgedung());
         String[] itemTitles = new String[itemCount];
         for (int i = 0; i < itemCount; ++i) {
             itemTitles[i] = ruanganList.get(i).getNama_ruang();
@@ -340,9 +342,12 @@ public class FormActivity extends AppCompatActivity {
     private void LaporKerusakan() {
         PostKerusakan postKerusakan = new PostKerusakan(
                 nik.getText().toString(),
+                gedung.getText().toString(),
+                ruangan.getText().toString(),
                 findidkerusakan(kerusakan.getText().toString()),
-                findidruangan(),
-                findjamid()
+                kerusakan.getText().toString(),
+                jamperkuliahan.getText().toString()
+
 
         );
         disposable.add(apiService
@@ -391,8 +396,9 @@ public class FormActivity extends AppCompatActivity {
     private void LaporAduan() {
         PostAduan postAduan = new PostAduan(
                 nik.getText().toString(),
-                findidruangan(),
-                findjamid(),
+                gedung.getText().toString(),
+                ruangan.getText().toString(),
+                jamperkuliahan.getText().toString(),
                 etaduan.getText().toString()
 
         );
