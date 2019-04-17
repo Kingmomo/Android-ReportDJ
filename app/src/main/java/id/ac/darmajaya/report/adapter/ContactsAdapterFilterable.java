@@ -1,8 +1,6 @@
 package id.ac.darmajaya.report.adapter;
 
-/**
- * Created by ravi on 31/01/18.
- */
+
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

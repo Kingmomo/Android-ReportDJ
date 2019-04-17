@@ -4,26 +4,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".view.LocalSearchActivity"
     android:background="@color/blue_500"
-    >
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".view.LocalSearchActivity">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha="0.1"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:gravity="bottom|center_horizontal"
+        android:src="@drawable/logo_darmajaya" />
 
     <EditText
         android:id="@+id/input_search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_large"
-        android:layout_marginBottom="@dimen/spacing_medium"
         android:layout_marginLeft="@dimen/activity_margin"
+        android:layout_marginTop="@dimen/spacing_large"
         android:layout_marginRight="@dimen/activity_margin"
-        android:gravity="left|center"
+        android:layout_marginBottom="@dimen/spacing_medium"
         android:background="@drawable/edit_text_round_bg_overlay_white"
+        android:gravity="left|center"
         android:hint="@string/hint_search"
-        android:paddingBottom="@dimen/dimen_20"
+        android:paddingBottom="@dimen/spacing_medium"
+        android:singleLine="true"
         android:textColor="@color/mdtp_white"
-        android:textColorHint="@color/white_transparency"
-        android:singleLine="true" />
+        android:textColorHint="@color/white_transparency" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"

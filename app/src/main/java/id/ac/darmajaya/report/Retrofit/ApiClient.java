@@ -13,9 +13,6 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-/**
- * Created by ravi on 31/01/18.
- */
 
 public class ApiClient {
     private static String TAG = ApiClient.class.getSimpleName();

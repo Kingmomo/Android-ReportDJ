@@ -2,9 +2,6 @@ package id.ac.darmajaya.report.Model;
 
 import com.google.gson.annotations.SerializedName;
 
-/**
- * Created by ravi on 31/01/18.
- */
 
 public class Contact {
     String name;

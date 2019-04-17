@@ -105,13 +105,25 @@ public class FormActivity extends AppCompatActivity {
 
     @OnClick(R.id.submit)
     public void submitdata() {
-//        if (validasi())
-
-        if (kategori.getText().toString().equals(itemKetegori[0].toString())) {
-            LaporKerusakan();
-        } else {
-            LaporAduan();
+        if (validasi() == true){
+            if (kategori.getText().toString().equals(itemKetegori[0].toString())) {
+                LaporKerusakan();
+            } else {
+                LaporAduan();
+            }
         }
+        else{
+            new StyleableToast.Builder(getApplicationContext())
+                    .text("Lengapi input data")
+                    .textColor(getResources().getColor(R.color.white_transparency))
+                    .iconStart(R.drawable.ic_error)
+                    .backgroundColor(getResources().getColor(R.color.red_500))
+                    .textBold()
+                    .cornerRadius(4)
+                    .show();
+        }
+
+
     }
 
     @OnClick({R.id.dosen, R.id.nik})

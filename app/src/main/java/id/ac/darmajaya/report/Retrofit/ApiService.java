@@ -14,10 +14,6 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 
-/**
- * Created by ravi on 31/01/18.
- */
-
 public interface ApiService {
 
     @GET("contacts.php")
