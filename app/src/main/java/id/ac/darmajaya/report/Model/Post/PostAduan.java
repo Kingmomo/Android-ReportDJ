@@ -5,14 +5,16 @@ public class PostAduan {
     private String gedung;
     private String ruangan;
     private String jam_perkuliahan;
-    private String aduan;
+    private String nama_aduan;
+    private String keterangan;
 
-    public PostAduan(String nik, String gedung, String ruangan, String jam_perkuliahan, String aduan) {
+    public PostAduan(String nik, String gedung, String ruangan, String jam_perkuliahan, String nama_aduan, String keterangan) {
         this.nik = nik;
         this.gedung = gedung;
         this.ruangan = ruangan;
         this.jam_perkuliahan = jam_perkuliahan;
-        this.aduan = aduan;
+        this.nama_aduan = nama_aduan;
+        this.keterangan = keterangan;
     }
 
     public String getNik() {
@@ -47,11 +49,19 @@ public class PostAduan {
         this.jam_perkuliahan = jam_perkuliahan;
     }
 
-    public String getAduan() {
-        return aduan;
+    public String getNama_aduan() {
+        return nama_aduan;
     }
 
-    public void setAduan(String aduan) {
-        this.aduan = aduan;
+    public void setNama_aduan(String nama_aduan) {
+        this.nama_aduan = nama_aduan;
+    }
+
+    public String getKeterangan() {
+        return keterangan;
+    }
+
+    public void setKeterangan(String keterangan) {
+        this.keterangan = keterangan;
     }
 }

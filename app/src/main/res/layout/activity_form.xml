@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@color/blue_500"
+    android:background="@color/blue_800"
     android:orientation="vertical"
     tools:context=".FormActivity">
 
@@ -17,7 +17,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/blue_500"
+            android:background="@color/blue_900"
             app:titleTextColor="@color/white_transparency"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
@@ -36,13 +36,13 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:gravity="bottom|center_horizontal"
-            android:src="@drawable/logo_darmajaya" />
+            />
 
         <android.support.v4.widget.NestedScrollView
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:clipToPadding="false"
-            android:padding="@dimen/spacing_mlarge"
+            android:padding="@dimen/spacing_large"
             android:scrollbars="none"
             android:scrollingCache="true"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
@@ -69,6 +69,14 @@
                 android:text="23-02-2019"
                 android:textColor="@color/white_transparency" />
 
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="bottom"
+                android:paddingLeft="@dimen/spacing_middle"
+                android:paddingRight="@dimen/spacing_middle"
+                android:text="Data Diri"
+                android:textColor="@color/white_transparency" />
 
             <TextView
                 android:id="@+id/nik"
@@ -240,9 +248,30 @@
                 android:textColor="@color/white_transparency"
                 android:textColorHint="@color/white_transparency" />
 
+            <TextView
+                android:id="@+id/aduan"
+                style="@style/EditText.Flat.Grey"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/spacing_xmlarge"
+                android:layout_marginTop="@dimen/spacing_mlarge"
+                android:background="@drawable/edit_text_round_bg_overlay_white"
+                android:drawableLeft="@drawable/ic_build"
+                android:drawablePadding="@dimen/spacing_medium"
+                android:drawableRight="@drawable/ic_arrow_drop"
+                android:editable="false"
+                android:focusable="false"
+                android:gravity="center|left"
+                android:hint="Jenis Aduan"
+                android:minHeight="@dimen/spacing_xmlarge"
+                android:paddingLeft="@dimen/spacing_middle"
+                android:paddingRight="@dimen/spacing_middle"
+                android:textColor="@color/white_transparency"
+                android:textColorHint="@color/white_transparency"
+                android:visibility="gone" />
+
 
             <android.support.design.widget.TextInputLayout
-                android:id="@+id/aduan"
+                android:id="@+id/etaduan"
                 style="@style/TextLimitStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -255,7 +284,7 @@
                 app:hintEnabled="false">
 
                 <android.support.design.widget.TextInputEditText
-                    android:id="@+id/etaduan"
+                    android:id="@+id/keterangan"
                     style="@style/EditText.Flat.Grey"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"

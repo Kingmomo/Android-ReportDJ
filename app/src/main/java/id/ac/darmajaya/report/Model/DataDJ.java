@@ -14,20 +14,22 @@ public class DataDJ {
     private List<Jam> jam;
     @SerializedName("jenis_kerusakan")
     private List<Kerusakan> kerusakan;
+    @SerializedName("jenis_aduan")
+    private List<Aduan> aduan;
     @SerializedName("status")
     private String status;
 
     public DataDJ() {
     }
 
-    public DataDJ(List<Dosen> dosen, List<Gedung> gedung, List<Jam> jam, List<Kerusakan> kerusakan, String status) {
+    public DataDJ(List<Dosen> dosen, List<Gedung> gedung, List<Jam> jam, List<Kerusakan> kerusakan, List<Aduan> aduan, String status) {
         this.dosen = dosen;
         this.gedung = gedung;
         this.jam = jam;
         this.kerusakan = kerusakan;
+        this.aduan = aduan;
         this.status = status;
     }
-
 
     public List<Dosen> getDosen() {
         return dosen;
@@ -59,6 +61,14 @@ public class DataDJ {
 
     public void setKerusakan(List<Kerusakan> kerusakan) {
         this.kerusakan = kerusakan;
+    }
+
+    public List<Aduan> getAduan() {
+        return aduan;
+    }
+
+    public void setAduan(List<Aduan> aduan) {
+        this.aduan = aduan;
     }
 
     public String getStatus() {

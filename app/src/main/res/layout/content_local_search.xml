@@ -9,29 +9,27 @@
     tools:context=".view.LocalSearchActivity">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:alpha="0.1"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:gravity="bottom|center_horizontal"
-        android:src="@drawable/logo_darmajaya" />
+        android:src="@color/blue_800" />
 
     <EditText
         android:id="@+id/input_search"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_marginLeft="@dimen/activity_margin"
         android:layout_marginTop="@dimen/spacing_large"
         android:layout_marginRight="@dimen/activity_margin"
         android:layout_marginBottom="@dimen/spacing_medium"
         android:background="@drawable/edit_text_round_bg_overlay_white"
+        android:drawableStart="@drawable/ic_search"
         android:gravity="left|center"
         android:hint="@string/hint_search"
-        android:paddingBottom="@dimen/spacing_medium"
-        android:singleLine="true"
         android:textColor="@color/mdtp_white"
         android:textColorHint="@color/white_transparency" />
 

@@ -27,6 +27,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import id.ac.darmajaya.report.Common.Validate;
+import id.ac.darmajaya.report.Model.Aduan;
 import id.ac.darmajaya.report.Model.DataDJ;
 import id.ac.darmajaya.report.Model.Gedung;
 import id.ac.darmajaya.report.Model.Jam;
@@ -59,14 +60,16 @@ public class FormActivity extends AppCompatActivity {
     TextView kategori;
     @BindView(R.id.kerusakan)
     TextView kerusakan;
+    @BindView(R.id.aduan)
+    TextView aduan;
     @BindView(R.id.namagedung)
     TextView namagedung;
     @BindView(R.id.ruangan)
     TextView ruangan;
-    @BindView(R.id.aduan)
-    TextInputLayout aduan;
     @BindView(R.id.etaduan)
-    TextInputEditText etaduan;
+    TextInputLayout etaduan;
+    @BindView(R.id.keterangan)
+    TextInputEditText keterangan;
     @BindView(R.id.submit)
     Button submit;
 
@@ -81,6 +84,7 @@ public class FormActivity extends AppCompatActivity {
     private List<Gedung> gedungList = new ArrayList<>();
     private List<Ruangan> ruanganList = new ArrayList<>();
     private List<Kerusakan> kerusakanList = new ArrayList<>();
+    private List<Aduan> aduanList = new ArrayList<>();
     private CharSequence[] itemKetegori = {"Kerusakan", "Aduan"};
 
 
@@ -157,6 +161,11 @@ public class FormActivity extends AppCompatActivity {
         showKerusakan();
     }
 
+    @OnClick(R.id.aduan)
+    public void openaduan() {
+        showAduan();
+    }
+
     private void showRuangan() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
@@ -195,28 +204,34 @@ public class FormActivity extends AppCompatActivity {
         alert.show();
     }
 
+    private void showAduan() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setTitle("Jenis Aduan");
+        final String[] itemTitles = getitemAduan();
+
+        builder.setSingleChoiceItems(itemTitles, -1, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int item) {
+
+                aduan.setText(itemTitles[item]);
+                if (aduan.getText().toString().equals("Dll")){
+                    etaduan.setVisibility(View.VISIBLE);
+                }else{
+                    etaduan.setVisibility(View.GONE);
+                    keterangan.setText("");
+                }
+                dialog.dismiss();
+                System.out.println("nama_aduan " + aduan.getText().toString());
+
+            }
+        });
+
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
+
     private void showJamPerkuliahan() {
-        // Use the Builder class for convenient dialog construction
-
-      /*  LayoutInflater inflater = this.getLayoutInflater();
-        final View dialogView= inflater.inflate(R.layout.radio_button_dialog, null);
-        builder.setView(dialogView);
-
-        builder.setMessage("Jam Perkuliahan")
-                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        // FIRE ZE MISSILES!
-                    }
-                });
-
-        RadioGroup rg = (RadioGroup) dialogView.findViewById(R.id.radio_group);
-
-
-        for (int i = 0; i < jamList.size(); i++) {
-            RadioButton rb = new RadioButton(this); // dynamically creating RadioButton and adding to RadioGroup.
-            rb.setText(jamList.get(i).getJam_perkuliahan());
-            rg.addView(rb);
-        }*/
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
         builder.setTitle("Jam Perkuliahan");
@@ -271,6 +286,8 @@ public class FormActivity extends AppCompatActivity {
                     case 0:
                         kerusakan.setVisibility(View.VISIBLE);
                         aduan.setVisibility(View.GONE);
+                        etaduan.setVisibility(View.GONE);
+                        keterangan.setText("");
                         break;
                     case 1:
                         kerusakan.setVisibility(View.GONE);
@@ -301,6 +318,15 @@ public class FormActivity extends AppCompatActivity {
         String[] itemTitles = new String[itemCount];
         for (int i = 0; i < itemCount; ++i) {
             itemTitles[i] = kerusakanList.get(i).getNama_kerusakan();
+        }
+        return itemTitles;
+    }
+
+    private String[] getitemAduan() {
+        final int itemCount = aduanList.size();
+        String[] itemTitles = new String[itemCount];
+        for (int i = 0; i < itemCount; ++i) {
+            itemTitles[i] = aduanList.get(i).getNama_aduan();
         }
         return itemTitles;
     }
@@ -338,9 +364,11 @@ public class FormActivity extends AppCompatActivity {
                         jamList.clear();
                         gedungList.clear();
                         kerusakanList.clear();
+                        aduanList.clear();
                         jamList.addAll(dataDJS.getJam());
                         gedungList.addAll(dataDJS.getGedung());
                         kerusakanList.addAll(dataDJS.getKerusakan());
+                        aduanList.addAll(dataDJS.getAduan());
 
                     }
 
@@ -411,7 +439,8 @@ public class FormActivity extends AppCompatActivity {
                 gedung.getText().toString(),
                 ruangan.getText().toString(),
                 jamperkuliahan.getText().toString(),
-                etaduan.getText().toString()
+                aduan.getText().toString(),
+                keterangan.getText().toString()
 
         );
         disposable.add(apiService
@@ -432,7 +461,7 @@ public class FormActivity extends AppCompatActivity {
                                     .show();
                         } else {
                             new StyleableToast.Builder(getApplicationContext())
-                                    .text("Data Sudah Pernah Dilaporkan")
+                                    .text("Data Gagal Dilaporkan")
                                     .textColor(getResources().getColor(R.color.white_transparency))
                                     .iconStart(R.drawable.ic_error)
                                     .backgroundColor(getResources().getColor(R.color.red_500))
@@ -472,6 +501,14 @@ public class FormActivity extends AppCompatActivity {
         for (Kerusakan kerusakan : kerusakanList) {
             if (kerusakan.getNama_kerusakan().equals(name))
                 return kerusakan.getId();
+        }
+        return null;
+    }
+
+    private String findidaduan(String name) {
+        for (Aduan aduan: aduanList) {
+            if (aduan.getNama_aduan().equals(name))
+                return aduan.getId();
         }
         return null;
     }
