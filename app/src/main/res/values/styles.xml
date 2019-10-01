@@ -39,4 +39,11 @@
         <!-- Customize color of navigation drawer icon and back arrow -->
         <item name="colorControlNormal">@color/white_transparency</item>
     </style>
+
+    <style name="EditText.Grey" parent="@style/AppTheme">
+        <item name="colorControlActivated">@color/grey_60</item>
+        <item name="colorControlHighlight">@color/grey_60</item>
+        <item name="colorControlNormal">@color/grey_40</item>
+    </style>
+
 </resources>

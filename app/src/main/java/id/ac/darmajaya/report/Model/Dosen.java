@@ -8,6 +8,9 @@ public class Dosen {
     @SerializedName("nama_dosen")
     private String nama_dosen;
 
+    public Dosen() {
+    }
+
     public Dosen(String nik, String nama_dosen) {
         this.nik = nik;
         this.nama_dosen = nama_dosen;

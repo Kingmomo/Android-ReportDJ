@@ -8,8 +8,7 @@ import id.ac.darmajaya.report.Model.Dosen;
 import id.ac.darmajaya.report.Model.Kerusakan;
 
 public class Common {
-    public static List<Dosen> dosenList = new ArrayList<>();
-
+    public static Dosen dosen = new Dosen();
 
 
 }

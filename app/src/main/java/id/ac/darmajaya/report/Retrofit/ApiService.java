@@ -5,8 +5,10 @@ import java.util.List;
 import id.ac.darmajaya.report.Model.Contact;
 import id.ac.darmajaya.report.Model.DataDJ;
 import id.ac.darmajaya.report.Model.Kerusakan;
+import id.ac.darmajaya.report.Model.Post.GetLogin;
 import id.ac.darmajaya.report.Model.Post.PostAduan;
 import id.ac.darmajaya.report.Model.Post.PostKerusakan;
+import id.ac.darmajaya.report.Model.Post.PostLogin;
 import id.ac.darmajaya.report.Model.Post.PostStatus;
 import io.reactivex.Single;
 import retrofit2.http.Body;
@@ -27,5 +29,10 @@ public interface ApiService {
 
     @POST("post_aduan")
     Single<PostStatus> postAduan(@Body PostAduan aduan);
+
+
+    @POST("post_login")
+    Single<GetLogin> postLogins(@Body PostLogin postLogin);
+
 
 }

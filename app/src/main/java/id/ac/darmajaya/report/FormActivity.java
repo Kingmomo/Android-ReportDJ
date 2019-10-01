@@ -26,6 +26,7 @@ import java.util.Locale;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import id.ac.darmajaya.report.Common.Common;
 import id.ac.darmajaya.report.Common.Validate;
 import id.ac.darmajaya.report.Model.Aduan;
 import id.ac.darmajaya.report.Model.DataDJ;
@@ -103,6 +104,8 @@ public class FormActivity extends AppCompatActivity {
         title.setText(currentdate);
         ruangan.setEnabled(false);
         fetchContacts();
+        dosen.setText(Common.dosen.getNama_dosen());
+        nik.setText(Common.dosen.getNik());
 
 
     }
@@ -130,11 +133,11 @@ public class FormActivity extends AppCompatActivity {
 
     }
 
-    @OnClick({R.id.dosen, R.id.nik})
+   /* @OnClick({R.id.dosen, R.id.nik})
     public void opensearchactivity() {
         Intent intent = new Intent(this, LocalSearchActivity.class);
         startActivityForResult(intent, PICK_DATA_DOSEN);
-    }
+    }*/
 
     @OnClick(R.id.jam)
     public void openjam() {
@@ -535,7 +538,7 @@ public class FormActivity extends AppCompatActivity {
         super.onDestroy();
     }
 
-    @Override
+/*    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         // Check which request we're responding to
         if (requestCode == PICK_DATA_DOSEN) {
@@ -549,7 +552,7 @@ public class FormActivity extends AppCompatActivity {
 
             }
         }
-    }
+    }*/
 
     private Boolean validasi() {
         if (!Validate.cek(nik)
